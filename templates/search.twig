@@ -1,0 +1,34 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<article class="post-type-{{post.post_type}} article-content" id="post-{{post.ID}}">
+  <div class="title-header dark-blue">
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x">
+        {% if title %}<h1 class="article-h1 no-p">{{title}}</h1>{% endif %}
+        {% if title is empty %}<h1 class="article-h1 no-p">Latest News from MhIST</h1>{% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <div class="cell large-12">
+        <section class="article-body">
+          {% if posts is empty %}
+            <h1>Sorry we couldn't find what you were looking for.</h1>
+            <p>You can find our <a href="http://localhost:8888/mhist/groups/">Support Group</a> pages here, or if you are looking for something specific then please <a href="contact-us">Contact Us</a> and we will try our best to help answer your query</p>
+          {% endif %}
+          {% for post in posts %}
+          
+          {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+
+          {% endfor %}
+          
+          {% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+        </section>
+      </div>
+    </div>
+  </div>
+</article>
+
+{% endblock %}

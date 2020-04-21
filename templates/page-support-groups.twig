@@ -1,0 +1,112 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<div class="content-wrapper">
+	<article class="post-type-{{post.post_type}} article-content" id="post-{{post.ID}}">
+
+		<div class="title-header dark-blue">
+			<div class="grid-container">
+				<div class="grid-x grid-margin-x">
+					<h1 class="article-h1">{{post.title}}</h1>
+					<p class="article-p"><strong>MhIST's Self Help Support Groups</strong><br />
+						{{post.preview.read_more(FALSE)}}</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="grid-container">
+			<h2>Self Help Support Groups</h2>
+			<p>Our support groups can provide you with all the tools you need to get the help you need, find out
+				more
+				about our groups below.</p>
+			<div class="grid-x grid-margin-x">
+				{% for post in support_groups|slice(0,6) %}
+				<div class="cell large-4">
+					<div class="support-group card {{ cycle(['even', 'odd'], loop.index0) }}" id="{{post.slug}}">
+						<div class="card-divider">
+							<a href="{{ post.link }}">
+								<h3>{{post.title}}</h3>
+							</a>
+						</div>
+						<div class="card-section">
+							<img src="{{ post.thumbnail.src }}" alt="Image">
+							<p>{{ post.preview.read_more(FALSE) }}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="grid-container-full">
+			<div class="cell cta dark-blue">
+				<div class="grid-container">
+					<div class="cell large-5 left">
+						<h3>Get involved with MhIST</h3>
+						<p>Volunteer with MhIST and help others.</p>
+						<a href="/mhist/get-involved/volunteer-with-us/" class="button hollow">Volunteer</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="grid-container">
+			<div class="grid-x grid-margin-x">
+				{% for post in support_groups|slice(6,6) %}
+				<div class="cell large-4">
+					<div class="support-group card {{ cycle(['even', 'odd'], loop.index0) }}" id="{{post.slug}}">
+						<div class="card-divider">
+							<a href="{{ post.link }}">
+								<h3>{{post.title}}</h3>
+							</a>
+						</div>
+						<div class="card-section">
+							<img src="{{ post.thumbnail.src }}" alt="Image">
+							<p>{{ post.preview.read_more(FALSE) }}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="grid-container-full">
+			<div class="cell cta yellow">
+				<div class="grid-container">
+					<div class="grid-x grid-margin-x flex-center-vertical spaced">
+						<div class="cell">
+							<h3>Our Sponsors</h3>
+						</div>
+						{% for post in supporters|slice(0,4) %}
+						<div class="cell large-2">
+							<a href="{{ post.link }}"><img src="{{ post.thumbnail.src }}" alt="{{ post.title }}"></a>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="grid-container">
+				<div class="grid-x grid-margin-x">
+					{% for post in support_groups|slice(12,3) %}
+					<div class="cell large-4">
+						<div class="support-group card {{ cycle(['even', 'odd'], loop.index0) }}" id="{{post.slug}}">
+							<div class="card-divider">
+								<a href="{{ post.link }}">
+									<h3>{{post.title}}</h3>
+								</a>
+							</div>
+							<div class="card-section">
+								<img src="{{ post.thumbnail.src }}" alt="Image">
+								<p>{{ post.preview.read_more(FALSE) }}</p>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+	</article>
+</div><!-- /content-wrapper -->
+{% endblock %}

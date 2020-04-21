@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div class="title-header dark-blue">
+	<div class="grid-container">
+		<div class="grid-x grid-margin-x">
+			{% if post.title is empty %}<h1 class="article-h1 no-p">404 - Something's wrong here</h1>{% endif %}
+		</div>
+	</div>
+</div>
+<div class="grid-container">
+	<section class="article-body">
+		<div class="grid-x grid-margin-x">
+			<div class="cell large-12">
+				<p><strong>Sorry, we couldn't find what you're looking for.</strong><br />
+					{{post.preview.read_more(FALSE)}}</p>
+				<p>It doesn't look like that page exists, please check the URL or <a
+						href="http://localhost:8888/mhist/information-and-support/contact-us/">Contact Us</a> and we
+					will try and help to find what you are looking for.</p>
+					<a href="http://localhost:8888/mhist/" class="button hollow">Home</a>
+			</div>
+	</section>
+</div>
+
+{% endblock %}

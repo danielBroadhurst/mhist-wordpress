@@ -1,0 +1,38 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<div class="content-wrapper">
+    <article class="post-type-{{post.post_type}} article-content" id="post-{{post.ID}}">
+
+        <div class="title-header dark-blue">
+            <div class="grid-container">
+                <div class="grid-x grid-margin-x">
+                    <h1 class="article-h1">{{post.title}}</h1>
+                    <p class="article-p"><strong>MhIST's Supporters &amp; Sponsors</strong><br />
+                        {{post.preview.read_more(FALSE)}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x">
+                <div class="cell large-12">
+                    <h2>Our Supporters &amp; Sponsors</h2>
+                    <div class="grid-container">
+                        <div class="grid-x grid-margin-x">
+                            {% for post in supporters %}
+                            <div class="cell large-6">
+                                <h2><a href="{{(post.external_link) ? post.external_link : '#' }}">{{post.title}}</a></h2>
+                                <img src="{{ post.thumbnail.src }}" alt="Image">
+                                <p>{{ post.preview.read_more(FALSE) }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </article>
+</div><!-- /content-wrapper -->
+{% endblock %}

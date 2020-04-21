@@ -1,0 +1,16 @@
+{% extends "index.twig" %}
+
+{% block content %}
+{% for post in posts %}
+    {% set post_terms  = post.terms('tour_category') %}
+    {% if function( 'has_term', 'Sightseeing Tours', 'tour_category' ) %}
+        {% set teaser = 'sightseeing' %}
+    {% elseif function( 'has_term', 'Golf Breaks', 'tour_category' ) %}
+        {% set teaser = 'golfbreak' %}
+    {% elseif function( 'has_term', 'Walking Tours', 'tour_category' ) %}
+        {% set teaser = 'wlkingtour' %}
+    {% endif %}
+    {% include ['teases/_tease-'~teaser~'.twig', 'teases/tease.twig'] %}
+{% endfor %}
+<h2>test</h2>
+{% endblock %}

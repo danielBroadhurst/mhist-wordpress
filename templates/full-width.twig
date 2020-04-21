@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<article class="post-type-{{post.post_type}} article-content" id="post-{{post.ID}}">
+
+	<div class="title-header dark-blue">
+		<div class="grid-container">
+			<div class="grid-x grid-margin-x">
+				<h1 class="article-h1">{{post.title}}</h1>
+				<p class="article-p">{{post.preview.read_more(FALSE)}}</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid-container">
+		<div class="grid-x grid-margin-x">
+			<div class="cell large-12">
+				<section class="article-body">
+					{{post.content}}
+				</section>
+			</div>
+		</div>
+	</div>
+
+
+</article>
+{% endblock %}

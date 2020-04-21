@@ -1,0 +1,44 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<div class="content-wrapper">
+    <article class="post-type-{{post.post_type}} article-content" id="post-{{post.ID}}">
+
+        <div class="title-header dark-blue">
+            <div class="grid-container">
+                <div class="grid-x grid-margin-x">
+                    <h1 class="article-h1">{{post.title}}</h1>
+                    <p class="article-p"><strong>MhIST's Frequently Asked Questions</strong><br/>
+                        {{post.preview.read_more(FALSE)}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x">
+                <div class="cell large-8">
+                    <h2>Frequently Asked Questions</h2>
+                    <ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
+                        {% for post in faq %}
+                        {% set append %}
+                        {% if loop.first %}is-active{% endif %}
+                        {% endset %}
+                        <li class="accordion-item {{ append }}" data-accordion-item>
+                            <a href="#" class="accordion-title">{{post.title}}</a>
+                            <div class="accordion-content" data-tab-content>
+                                <p>{{ post.content }}</p>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="cell large-3 large-offset-1">
+                    <h2>Looking for help?</h2>
+                    {{ page_right_small }}
+                </div>
+            </div>
+        </div>
+
+    </article>
+</div><!-- /content-wrapper -->
+{% endblock %}

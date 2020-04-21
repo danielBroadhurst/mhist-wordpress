@@ -1,0 +1,25 @@
+<div class="comment-section">
+	<div class="comment-author">
+		<h4>{{comment.author.name}}</h4>
+	</div>
+	<div class="comment-content">
+		<p>{{ comment.content }}</p>
+	</div>
+
+	<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
+		<li class="accordion-item" data-accordion-item>
+			<a href="#" class="accordion-title comment-reply">Reply to Comment</a>
+			<div class="accordion-content" data-tab-content>
+				{{function('comment_form') }}
+			</div>
+		</li>
+	</ul>
+	<!-- nested comments here -->
+	{% if comment.children %}
+	<div class="accordion-content" data-tab-content>
+		{% for child_comment in comment.children %}
+		{% include 'comment.twig' with { comment:child_comment } %}
+		{% endfor %}
+	</div>
+	{% endif %}
+</div>

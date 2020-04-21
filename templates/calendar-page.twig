@@ -1,0 +1,156 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<article class="post-type-{{post.post_type}} article-content" id="post-{{post.ID}}">
+    <div class="title-header dark-blue">
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x">
+                {% if post.title %}<h1 class="article-h1">{{post.title}}</h1>{% endif %}
+                {% if post.title is empty %}<h1 class="article-h1 no-p">Category from MhIST</h1>{% endif %}
+                <p class="article-p"><strong>MhIST's Weekly Self Help Support Groups</strong><br />
+                    {{post.preview.read_more(FALSE)}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell large-12">
+                <ul class="pagination-block" id="daySelect">
+                    <li data-value="all" class="button hollow" onclick="daySelect(this)"><a href="Javascript:void(0)">All</a></li>
+                    <li data-value="date" class="button hollow" onclick="myFunction()"><a href="Javascript:void(0)">Today</a></li>
+                    <li data-value="monday" class="button hollow" onclick="daySelect(this)"><a href="Javascript:void(0)">Monday</a></li>
+                    <li data-value="tuesday" class="button hollow" onclick="daySelect(this)"><a href="Javascript:void(0)">Tuesday</a></li>
+                    <li data-value="wednesday" class="button hollow" onclick="daySelect(this)"><a href="Javascript:void(0)">Wednesday</a></li>
+                    <li data-value="thursday" class="button hollow" onclick="daySelect(this)"><a href="Javascript:void(0)">Thursday</a></li>
+                    <li data-value="friday" class="button hollow" onclick="daySelect(this)"><a href="Javascript:void(0)"></a>Friday</a></li>
+                </ul>
+            </div>
+
+            <div class="cell large-12" id="days">
+                <div id="all" class="day"></div>
+                <div id="monday" class="day">
+                    <div class="grid-container">
+                        <section class="article-body">
+                            <h2>Monday</h2>
+                            <div class="grid-x grid-margin-x">
+                                {% for post in monday %}
+                                <div class="cell large-3">
+                                    <div class="card {{ cycle(['even', 'odd'], loop.index0) }}">
+                                        <div class="card-divider">
+                                            <a href="{{ post.link }}">
+                                                <h3>{{post.title}}</h3>
+                                            </a>
+                                        </div>
+                                        <div class="card-section">
+                                            <img src="{{ post.thumbnail.src|resize(1200, 800) }}" alt="Image">
+                                            <p>{{post.preview.read_more(FALSE)}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div id="tuesday" class="day">
+                    <div class="grid-container">
+                        <section class="article-body">
+                            <h2>Tuesday</h2>
+                            <div class="grid-x grid-margin-x">
+                                {% for post in tuesday %}
+                                <div class="cell large-3">
+                                    <div class="card {{ cycle(['even', 'odd'], loop.index0) }}">
+                                        <div class="card-divider">
+                                            <a href="{{ post.link }}">
+                                                <h3>{{post.title}}</h3>
+                                            </a>
+                                        </div>
+                                        <div class="card-section">
+                                            <img src="{{ post.thumbnail.src|resize(1200, 800) }}" alt="Image">
+                                            <p>{{post.preview.read_more(FALSE)}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div id="wednesday" class="day">
+                    <div class="grid-container">
+                        <section class="article-body">
+                            <h2>Wednesday</h2>
+                            <div class="grid-x grid-margin-x">
+                                {% for post in wednesday %}
+                                <div class="cell large-3">
+                                    <div class="card {{ cycle(['even', 'odd'], loop.index0) }}">
+                                        <div class="card-divider">
+                                            <a href="{{ post.link }}">
+                                                <h3>{{post.title}}</h3>
+                                            </a>
+                                        </div>
+                                        <div class="card-section">
+                                            <img src="{{ post.thumbnail.src|resize(1200, 800) }}" alt="Image">
+                                            <p>{{post.preview.read_more(FALSE)}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div id="thursday" class="day">
+                    <div class="grid-container">
+                        <section class="article-body">
+                            <h2>Thursday</h2>
+                            <div class="grid-x grid-margin-x">
+                                {% for post in thursday %}
+                                <div class="cell large-3">
+                                    <div class="card {{ cycle(['even', 'odd'], loop.index0) }}">
+                                        <div class="card-divider">
+                                            <a href="{{ post.link }}">
+                                                <h3>{{post.title}}</h3>
+                                            </a>
+                                        </div>
+                                        <div class="card-section">
+                                            <img src="{{ post.thumbnail.src|resize(1200, 800) }}" alt="Image">
+                                            <p>{{post.preview.read_more(FALSE)}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div id="friday" class="day">
+                    <div class="grid-container">
+                        <section class="article-body">
+                            <h2>Friday</h2>
+                            <div class="grid-x grid-margin-x">
+                                {% for post in friday %}
+                                <div class="cell large-3">
+                                    <div class="card {{ cycle(['even', 'odd'], loop.index0) }}">
+                                        <div class="card-divider">
+                                            <a href="{{ post.link }}">
+                                                <h3>{{post.title}}</h3>
+                                            </a>
+                                        </div>
+                                        <div class="card-section">
+                                            <img src="{{ post.thumbnail.src|resize(1200, 800) }}" alt="Image">
+                                            <p>{{post.preview.read_more(FALSE)}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+{% endblock %}

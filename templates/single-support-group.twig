@@ -1,0 +1,47 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<article class="post-type-{{ post.post_type }} article-content" id="post-{{ post.ID }}">
+	<div class="title-header dark-blue">
+		<div class="grid-container">
+			<div class="grid-x grid-margin-x">
+				<h1 class="article-h1">{{post.title}}</h1>
+				<p class="article-p">{{post.preview.read_more(FALSE)}}</p>
+			</div>
+		</div>
+	</div>
+	<div class="grid-container">
+		<section class="article-body">
+			<div class="grid-x grid-margin-x">
+				<div class="cell large-8">
+					<img src="{{ Image(post.meta('support_group_poster')).src }}" alt="Image"/>
+ 					<p class="blog-author">
+						<span>By</span><a href="{{post.author.path}}"> {{ post.author.name }}
+						</a><span>&bull;</span>
+						{{ post.date }}
+					</p> 
+					<p class="support-group-info">
+						<span>Day : {{post.support_group_day}}<br /></span>
+						<span>Time : {{post.support_group_time|date('H:i a')}}</span><span> - {{post.support_group_time_end|date('H:i a')}}<br /></span> 
+						<span>Location : {{post.support_group_location}}<br /></span>
+						<span>Facilitator : {{post.support_group_facilitator}}<br /></span>
+					</p>
+					<div class="support-group-content">
+						{{post.content}}
+					</div>
+					<div class="support-group-footer">
+						<span><strong>MhIST (Mental Health Independent Support Team)</strong><br /></span>
+						<span>Hanover House, Hanover Street, Bolton BL1 4TG<br /></span>
+						<span><i class="fas fa-phone"></i> 01204 527200 <i class="far fa-envelope"></i> help@mhist.co.uk <i class="fab fa-facebook-square"></i> mhist.bolton<br /></span>
+						<span>www.mhist.co.uk<br /></span>
+					</div>
+				</div>
+				<div class="cell large-3 large-offset-1">
+					{{ page_right_small }}
+					{{ page_right }}
+				</div>
+			</div>
+		</section>
+	</div>
+</article>
+{% endblock %}

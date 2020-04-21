@@ -1,0 +1,112 @@
+{% block html_head_container %}
+
+{% include 'html-header.twig' %}
+{% block head %}
+{% endblock %}
+</head>
+{% endblock %}
+
+<body class="{{body_class}}" data-template="base.twig">
+	<a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a>
+	<header class="header">
+		{% block header %}
+		<div class="grid-container">
+			<div class="grid-x grid-margin-x flex-center-vertical">
+				<div class="cell small-4 header-logo">
+					<a href="{{site.url}}" rel="home" title="MhIST Home Page"><img
+							src="{{site.url}}/wp-content/uploads/2019/07/mhist-logo-new.png"
+							alt="MhIST Bolton Logo"></a>
+				</div>
+				<div class="cell small-8 social-icons">
+					<a href="https://www.facebook.com/mhist.bolton/" target="_blank"><img
+							src="{{site.url}}/wp-content/uploads/2019/06/iconfinder_Facebook_4550856.png"
+							alt="MhIST Facebook" title="MhIST Facebook"></a>
+					<a href="https://donate.giveasyoulive.com/donate?cid=118485&utm_campaign=Donatebutton&utm_content=118485&wl=1&br=22&bc=e61f68" target="_blank"><img 
+						src="https://resources.giveasyoulive.com/images/donations/button-square-donate-navy.png?cid=118485" 
+						alt="Donate through Give as you Live Donate" title="Give as you Live" width="auto" /></a>
+					<a href="https://www.justgiving.com/mhist" target="_blank"><img
+							src="{{site.url}}/wp-content/uploads/2019/07/JustGiving-Logo.png"
+							alt="MhIST Just Giving" title="MhIST Just Giving"></a>
+					<a href="tel:01204527200"><img
+							src="{{site.url}}/wp-content/uploads/2019/06/iconfinder_Viber_4550868.png"
+							alt="Call MhIST" title="Call MhIST"></a>
+					<a href="mailto:help@mhist.co.uk"><img
+							src="{{site.url}}/wp-content/uploads/2019/06/iconfinder_Email_4550857.png"
+							alt="Email MhIST" title="Email MhIST"></a>
+				</div>
+			</div>
+		</div>
+		{% include "menu.twig" with {'menu': menu.get_items} %}
+
+		{% endblock %}
+	</header>
+
+	<div id="content" role="main" class="content-wrapper">
+		<div class="wrapper {{sidebar_class}}">
+			{% block content %}
+			{% if title %}<h1>{{title}}</h1>{% endif %}
+			Sorry, no content
+			{% endblock %}
+		</div>
+		{% if sidebar %}
+		<aside class="layout-sidebar">
+			{{sidebar}}
+		</aside>
+		{% endif %}
+	</div>
+
+	{% block footer %}
+	<footer id="footer" class="dark-blue">
+		<!--{% include 'footer.twig' %}-->
+		<div class="grid-container">
+			<div class="grid-x grid-margin-x">
+				<div class="cell large-4">
+					{{ footer_widget_1 }}
+				</div>
+				<div class="cell large-4">{{ footer_widget_2 }}</div>
+				<div class="cell large-4">{{ footer_widget_3 }}
+					<div class="footer-widget">
+						<h2>Social Media Links</h2>
+						<div class="alignleft">
+							<a href="https://www.facebook.com/mhist.bolton/"><img
+									src="{{site.url}}/wp-content/uploads/2019/06/iconfinder_Facebook_4550856.png"
+									alt="MhIST Facebook" title="MhIST Facebook"></a>
+							{# <a href="#"><img
+									src="{{site.url}}/wp-content/uploads/2019/07/circle-instagram-icon-103219.png"
+									alt="MhIST Facebook" title="MhIST Instagram"></a> #}
+							<a href="https://www.justgiving.com/mhist"><img
+									src="{{site.url}}/wp-content/uploads/2019/07/JustGiving-Logo.png"
+									alt="MhIST Just Giving" title="MhIST Just Giving"></a>
+							<a href="tel:01204527200"><img
+									src="{{site.url}}/wp-content/uploads/2019/06/iconfinder_Viber_4550868.png"
+									alt="Call MhIST" title="Call MhIST"></a>
+							<a href="mailto:help@mhist.co.uk"><img
+									src="{{site.url}}/wp-content/uploads/2019/06/iconfinder_Email_4550857.png"
+									alt="Email MhIST" title="Email MhIST"></a>
+						</div>
+					</div>
+					<div class="footer-widget justGiving">
+						<a href="//widgets.justgiving.com/Button/Redirect?p=eyJJZCI6IjcyODE4MDkwLWExMWEtNDdmNi1iMjQ3LWYyNjk0NmZlZjEyMyIsIkNoYXJpdHlJZCI6ODA5NzQ2LCJTaXplIjoicyIsIlJlZmVyZW5jZSI6ImhvbWVwYWdlIiwiVHlwZSI6IkRvbmF0ZSJ9"><img
+											src="//widgets.justgiving.com/Button?p=eyJJZCI6IjcyODE4MDkwLWExMWEtNDdmNi1iMjQ3LWYyNjk0NmZlZjEyMyIsIkNoYXJpdHlJZCI6ODA5NzQ2LCJTaXplIjoicyIsIlJlZmVyZW5jZSI6ImhvbWVwYWdlIiwiVHlwZSI6IkRvbmF0ZSJ9" /></a>
+											<a href="https://donate.giveasyoulive.com/donate?cid=118485&utm_campaign=Donatebutton&utm_content=118485&wl=1&br=22&bc=e61f68" target="_blank"><img src="https://resources.giveasyoulive.com/images/donations/button-rect-donate-navy.png?cid=118485" alt="Donate through Give as you Live Donate" width="auto" /></a>
+					</div>
+				</div>
+				<div class="cell">
+					<div class="copyright">
+						<p>COPYRIGHT © 2019 MhIST IS A REGISTERED CHARITY NUMBER 1130152 &amp; IS REGISTERED IN CARDIFF
+							AS A
+							COMPANY LIMITED BY GUARANTEE NUMBER 4128980.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	{{ function('wp_footer') }}
+	{% endblock %}
+	<script src="{{ site.theme.link }}/js/vendor/jquery.js"></script>
+	<script src="{{ site.theme.link }}/js/vendor/what-input.js"></script>
+	<script src="{{ site.theme.link }}/js/vendor/foundation.js"></script>
+	<script src="{{ site.theme.link }}/js/app.js"></script>
+</body>
+
+</html>

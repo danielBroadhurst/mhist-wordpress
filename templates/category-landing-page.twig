@@ -1,0 +1,35 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<article class="post-type-{{post.post_type}} article-content" id="post-{{post.ID}}">
+    <div class="title-header dark-blue">
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x">
+                {% if post.title %}<h1 class="article-h1 no-p">{{post.title}}</h1>{% endif %}
+                {% if post.title is empty %}<h1 class="article-h1 no-p">Category from MhIST</h1>{% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="grid-container">
+        <section class="article-body">
+            <div class="grid-x grid-margin-x">
+                <div class="cell large-12">
+                    {{post.content}}
+                </div>
+        </section>
+    </div>
+    <div class="grid-container">
+        <section class="article-body">
+            <h2>Latest News from MhIST</h2>
+            <div class="grid-x grid-margin-x">
+                {% for post in news_stories %}
+                <div class="cell large-4">
+                    {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+                </div>
+                {% endfor %}
+                {% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+        </section>
+    </div>
+</article>
+
+{% endblock %}
