@@ -315,6 +315,84 @@ class StarterSite extends Timber\Site
 		}
 		add_action('init', 'bds_post_type_faq');
 
+		// Talk Therapy FAQ
+		function bds_post_type_talk_therapy_faq()
+		{
+			$supports = array(
+				'title', // post title
+				'editor', // post content
+				'author', // post author
+				'revisions', // post revisions
+			);
+			$labels = array(
+				'name' => _x('Talk Therapy FAQ', 'plural'),
+				'singular_name' => _x('Talk Therapy FAQ', 'singular'),
+				'menu_name' => _x('Talk Therapy FAQ', 'admin menu'),
+				'name_admin_bar' => _x('Talk Therapy FAQ', 'admin bar'),
+				'add_new' => _x('Add New', 'add new'),
+				'add_new_item' => __('Add New Talk Therapy FAQ'),
+				'new_item' => __('New Talk Therapy FAQ'),
+				'edit_item' => __('Edit Talk Therapy FAQ'),
+				'view_item' => __('View Talk Therapy FAQ'),
+				'all_items' => __('All Talk Therapy FAQs'),
+				'search_items' => __('Search Talk Therapy FAQ'),
+				'not_found' => __('No Talk Therapy FAQ found.'),
+			);
+			$args = array(
+				'supports' => $supports,
+				'labels' => $labels,
+				'public' => true,
+				'query_var' => true,
+				'rewrite' => array('slug' => 'talk-therapy-faq'),
+				'has_archive' => false,
+				'hierarchical' => false,
+				'publicly_queryable' => true,
+				'show_in_rest' => true,
+				'posts_per_page' => -1
+				);
+			register_post_type('talk-therapy-faq', $args);
+		}
+		add_action('init', 'bds_post_type_talk_therapy_faq');
+
+		// Advocacy FAQ
+		function advocacy_faq()
+		{
+			$supports = array(
+				'title', // post title
+				'editor', // post content
+				'author', // post author
+				'revisions', // post revisions
+			);
+			$labels = array(
+				'name' => _x('Advocacy FAQ', 'plural'),
+				'singular_name' => _x('Advocacy FAQ', 'singular'),
+				'menu_name' => _x('Advocacy FAQ', 'admin menu'),
+				'name_admin_bar' => _x('Advocacy FAQ', 'admin bar'),
+				'add_new' => _x('Add New', 'add new'),
+				'add_new_item' => __('Add New Advocacy FAQ'),
+				'new_item' => __('New Advocacy FAQ'),
+				'edit_item' => __('Edit Advocacy FAQ'),
+				'view_item' => __('View Advocacy FAQ'),
+				'all_items' => __('All Advocacy FAQs'),
+				'search_items' => __('Search Advocacy FAQ'),
+				'not_found' => __('No Advocacy FAQ found.'),
+			);
+			$args = array(
+				'supports' => $supports,
+				'labels' => $labels,
+				'public' => true,
+				'query_var' => true,
+				'rewrite' => array('slug' => 'advocacy-faq'),
+				'has_archive' => false,
+				'hierarchical' => false,
+				'publicly_queryable' => true,
+				'show_in_rest' => true,
+				'posts_per_page' => -1
+				);
+			register_post_type('advocacy-faq', $args);
+		}
+		add_action('init', 'advocacy_faq');
+
 		//FAQ
 		function bds_post_type_quotes()
 		{

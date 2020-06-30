@@ -50,7 +50,19 @@ $args4 = array(
     'orderby'   => 'rand',
     'posts_per_page' => -1,
 );
-$context['faq'] = new Timber\PostQuery( $args4 );
+$context['faq'] = Timber::get_posts( $args4 );
+$args8 = array(
+    'post_type' => 'talk-therapy-faq',
+    'orderby'   => 'rand',
+    'posts_per_page' => -1,
+);
+$context['talk_therapy_faq'] = Timber::get_posts( $args8 );
+$args9 = array(
+    'post_type' => 'advocacy-faq',
+    'orderby'   => 'rand',
+    'posts_per_page' => -1,
+);
+$context['advocacy_faq'] = Timber::get_posts( $args9 );
 $args6 = array(
     'post_type' => 'supporters',
     'orderby'     => 'rand'
@@ -60,6 +72,7 @@ $args5 = array(
     'post_type' => 'testimonials',
     'orderby'   => 'rand',
 );
+//var_dump(Timber::get_posts( $args9 ));die();
 $context['testimonials'] = Timber::get_posts( $args5 );
 $context['page_right'] = Timber::get_widgets('page_right');
 $context['page_right_small'] = Timber::get_widgets('page_right_small');
