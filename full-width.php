@@ -15,6 +15,8 @@ $context['post'] = $timber_post;
 $context['footer_widget_1'] = Timber::get_widgets('footer_widget_1');
 $context['footer_widget_2'] = Timber::get_widgets('footer_widget_2');
 $context['footer_widget_3'] = Timber::get_widgets('footer_widget_3');
+$context['page_right'] = Timber::get_widgets('page_right');
+$context['page_right_small'] = Timber::get_widgets('page_right_small');
 $templates = array( 'full-width.twig' );
 if ( is_home() ) {
 	array_unshift( $templates, 'front-page.twig', 'home.twig' );

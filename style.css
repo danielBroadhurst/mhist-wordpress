@@ -2,7 +2,7 @@
  * Theme Name: MhIST Timber Theme
  * Description: Theme for MhIST Charity Website
  * Author: Bee Design Studio!
- * Version: 1.13
+ * Version: 1.15
 */
 @import url('https://fonts.googleapis.com/css?family=Patrick+Hand|Roboto:300&display=swap');
 
@@ -369,8 +369,8 @@ h4 {
 }
 
 article .grid-container {
-    margin-top: 2em;
-    margin-bottom: 3em;
+    margin-top: 0em;
+    margin-bottom: .5em;
 }
 
 .article-content h2::after {
@@ -397,7 +397,7 @@ article .grid-container {
 
 .title-header {
     background-color: #00708a;
-    padding: 2em 0em;
+    padding: .2em 0em;
     margin-bottom: 3em;
 }
 
@@ -760,6 +760,40 @@ footer #menu-footer-menu {
 
 .menu-icon::after {
     width: 80%;
+}
+
+/* Emergency Header */
+.emergency .grid-container,
+.emergency.cta:first-child,
+.emergency {
+    padding: 0em;
+    margin: 0em;
+}
+
+.emergency .cell {
+    padding: .5em 0em;
+    display: flex;
+}
+
+.emergency .cell h2 {
+    display: block;
+    width: 100%;
+}
+
+.emergency .cell p {
+    display: block;
+    width: 100%;
+    align-self: center;
+    flex-flow: column;
+}
+
+.full-width-widgets {
+    display: flex;
+    flex-flow: row;
+}
+
+.full-width-widgets h4 {
+    text-align: center;
 }
 
 /* Media Queries */

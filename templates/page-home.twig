@@ -4,6 +4,18 @@
 <div class="content-wrapper" id="main-content">
 	<article class="post-type-{{post.post_type}} article-content" id="post-{{post.ID}}">
 
+		{% if post.meta('emergencymessage') is not empty %}
+		<div class="grid-container-full">
+			<div class="cell cta yellow emergency">
+				<div class="grid-x grid-margin-x align-center">
+					<div class="cell medium-8">						
+						{{ post.meta('emergencymessage') }}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
 		<div class="grid-container-full header-section">
 			<div class="header-image">
 				<img src="{{ post.thumbnail.src|resize(1400, 600) }}" alt="{{ post.title }}">

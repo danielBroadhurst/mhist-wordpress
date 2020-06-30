@@ -6,7 +6,7 @@
 		<div class="grid-container">
 			<div class="grid-x grid-margin-x">
 				<h1 class="article-h1">{{post.title}}</h1>
-				<p class="article-p">{{post.preview.read_more(FALSE)}}</p>
+				<a href="https://donate.giveasyoulive.com/donate?cid=118485&utm_campaign=CTDonateButton&utm_content=118485&utm_source=charitytoolkit&utm_medium=charitydonatebutton&wl=1&br=22&bc=efff00" target="_blank"><img src="https://resources.giveasyoulive.com/images/donations/button-rect-donate-pink.png?cid=118485" alt="Donate through Give as you Live Donate" width="auto" /></a>
 			</div>
 		</div>
 	</div>
@@ -17,13 +17,22 @@
 					{% if post.thumbnail.src is not empty %}
 						<img src="{{ post.thumbnail.src|resize(1200, 800) }}" alt="Image">
 					{% endif %}	
-					<p class="blog-author">
+					<!-- <p class="blog-author">
 						<span>By</span><a href="{{post.author.path}}"> {{ post.author.name }}
 						</a><span>&bull;</span>
 						{{ post.date }}
-					</p>
+					</p> -->
 					<div class="article-body">
 						{{post.content}}
+					</div>
+					<div class="comments">
+					{% for comment in post.comments %}
+						<article class="comment" id="comment-{{ comment.id }}">
+							<h5 class="comment-author">{{ comment.author.name }} says</h5>
+						{{ comment.content }}
+						</article>
+					{% endfor %}
+					{{ function('comment_form') }}
 					</div>
 				</div>
 				<div class="cell large-3 large-offset-1">

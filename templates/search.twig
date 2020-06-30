@@ -16,7 +16,7 @@
         <section class="article-body">
           {% if posts is empty %}
             <h1>Sorry we couldn't find what you were looking for.</h1>
-            <p>You can find our <a href="http://localhost:8888/mhist/groups/">Support Group</a> pages here, or if you are looking for something specific then please <a href="contact-us">Contact Us</a> and we will try our best to help answer your query</p>
+            <p>You can find our <a href="{{site.url}}/groups/">Support Group</a> pages here, or if you are looking for something specific then please <a href="contact-us">Contact Us</a> and we will try our best to help answer your query</p>
           {% endif %}
           {% for post in posts %}
           
