@@ -33,6 +33,21 @@
             </div>
         </div>
 
+        <div class="grid-container">
+		
+			{% if post.thumbnail.src is not empty %}
+				<img src="{{ post.thumbnail.src|resize(1200, 375) }}" alt="Image" class="page-header-image">
+			{% endif %}	
+			<div class="grid-x grid-margin-x">
+			<div class="cell large-12">
+				<section class="article-body">
+					{{post.content}}
+				</section>
+			</div>
+		</div>
+
+	</div>
+
     </article>
 </div><!-- /content-wrapper -->
 {% endblock %}
