@@ -51,10 +51,12 @@ class StarterSite extends Timber\Site
 	}
 	/** This is where you can register custom post types. */
 	public function register_post_types()
-	{ }
+	{
+	}
 	/** This is where you can register custom taxonomies. */
 	public function register_taxonomies()
-	{ }
+	{
+	}
 
 	/** This is where you add some context
 	 *
@@ -184,10 +186,10 @@ class StarterSite extends Timber\Site
 		// add editor the privilege to edit theme
 
 		// get the the role object
-		$role_object = get_role( 'editor' );
+		$role_object = get_role('editor');
 
 		// add $cap capability to this role object
-		$role_object->add_cap( 'edit_theme_options' );
+		$role_object->add_cap('edit_theme_options');
 
 		/*Custom Post type start*/
 		// Support Groups
@@ -225,17 +227,18 @@ class StarterSite extends Timber\Site
 				'hierarchical' => false,
 				'publicly_queryable' => true,
 				'show_in_rest' => true,
-				'taxonomies' => array('post_tag'),				
+				'taxonomies' => array('post_tag'),
 			);
 			register_post_type('support-group', $args);
 		}
 		add_action('init', 'bds_post_type_support_groups');
-		function wpa_cpt_tags( $query ) {
-			if ( $query->is_tag() && $query->is_main_query() ) {
-				$query->set( 'post_type', array( 'support-group', 'object' ) );
+		function wpa_cpt_tags($query)
+		{
+			if ($query->is_tag() && $query->is_main_query()) {
+				$query->set('post_type', array('support-group', 'object'));
 			}
 		}
-		add_action( 'pre_get_posts', 'wpa_cpt_tags' );
+		add_action('pre_get_posts', 'wpa_cpt_tags');
 		//Your Stories
 		function bds_post_type_your_stories()
 		{
@@ -310,7 +313,7 @@ class StarterSite extends Timber\Site
 				'publicly_queryable' => true,
 				'show_in_rest' => true,
 				'posts_per_page' => -1
-				);
+			);
 			register_post_type('FAQ', $args);
 		}
 		add_action('init', 'bds_post_type_faq');
@@ -349,10 +352,49 @@ class StarterSite extends Timber\Site
 				'publicly_queryable' => true,
 				'show_in_rest' => true,
 				'posts_per_page' => -1
-				);
+			);
 			register_post_type('talk-therapy-faq', $args);
 		}
 		add_action('init', 'bds_post_type_talk_therapy_faq');
+
+		// Talk Therapy FAQ
+		function bds_post_type_self_help_faq()
+		{
+			$supports = array(
+				'title', // post title
+				'editor', // post content
+				'author', // post author
+				'revisions', // post revisions
+			);
+			$labels = array(
+				'name' => _x('Self Help FAQ', 'plural'),
+				'singular_name' => _x('Self Help FAQ', 'singular'),
+				'menu_name' => _x('Self Help FAQ', 'admin menu'),
+				'name_admin_bar' => _x('Self Help FAQ', 'admin bar'),
+				'add_new' => _x('Add New', 'add new'),
+				'add_new_item' => __('Add New Self Help FAQ'),
+				'new_item' => __('New Self Help FAQ'),
+				'edit_item' => __('Edit Self Help FAQ'),
+				'view_item' => __('View Self Help FAQ'),
+				'all_items' => __('All Self Help FAQs'),
+				'search_items' => __('Search Self Help FAQ'),
+				'not_found' => __('No Self Help FAQ found.'),
+			);
+			$args = array(
+				'supports' => $supports,
+				'labels' => $labels,
+				'public' => true,
+				'query_var' => true,
+				'rewrite' => array('slug' => 'self-help-faq'),
+				'has_archive' => false,
+				'hierarchical' => false,
+				'publicly_queryable' => true,
+				'show_in_rest' => true,
+				'posts_per_page' => -1
+			);
+			register_post_type('self-help-faq', $args);
+		}
+		add_action('init', 'bds_post_type_self_help_faq');
 
 		// Advocacy FAQ
 		function advocacy_faq()
@@ -388,7 +430,7 @@ class StarterSite extends Timber\Site
 				'publicly_queryable' => true,
 				'show_in_rest' => true,
 				'posts_per_page' => -1
-				);
+			);
 			register_post_type('advocacy-faq', $args);
 		}
 		add_action('init', 'advocacy_faq');
@@ -427,7 +469,7 @@ class StarterSite extends Timber\Site
 				'publicly_queryable' => true,
 				'show_in_rest' => true,
 				'posts_per_page' => -1
-				);
+			);
 			register_post_type('Quotes', $args);
 		}
 		add_action('init', 'bds_post_type_quotes');

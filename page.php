@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all pages.
  *
@@ -27,53 +28,59 @@ $args = array(
     'post_type' => 'support-group',
     'orderby'   => 'rand',
 );
-$context['support_groups'] = Timber::get_posts( $args );
+$context['support_groups'] = Timber::get_posts($args);
 $args0 = array(
     'post_type' => 'support-group',
     'orderby'   => 'title',
     'order'     => 'ASC',
     'numberposts'      => -1,
 );
-$context['support_groups_all'] = Timber::get_posts( $args0);
+$context['support_groups_all'] = Timber::get_posts($args0);
 $args2 = array(
     'post_type' => 'your-stories',
     'orderby'   => 'rand'
 );
-$context['your_stories'] = Timber::get_posts( $args2 );
+$context['your_stories'] = Timber::get_posts($args2);
 $args3 = array(
     'post_type' => 'post',
     'category_name' => 'latest-news'
 );
-$context['news_stories'] = Timber::get_posts( $args3 );
+$context['news_stories'] = Timber::get_posts($args3);
 $args4 = array(
     'post_type' => 'faq',
     'orderby'   => 'rand',
     'posts_per_page' => -1,
 );
-$context['faq'] = Timber::get_posts( $args4 );
+$context['faq'] = Timber::get_posts($args4);
 $args8 = array(
     'post_type' => 'talk-therapy-faq',
     'orderby'   => 'rand',
     'posts_per_page' => -1,
 );
-$context['talk_therapy_faq'] = Timber::get_posts( $args8 );
+$context['talk_therapy_faq'] = Timber::get_posts($args8);
 $args9 = array(
     'post_type' => 'advocacy-faq',
     'orderby'   => 'rand',
     'posts_per_page' => -1,
 );
-$context['advocacy_faq'] = Timber::get_posts( $args9 );
+$context['advocacy_faq'] = Timber::get_posts($args9);
+$args10 = array(
+    'post_type' => 'self-help-faq',
+    'orderby'   => 'rand',
+    'posts_per_page' => -1,
+);
+$context['self_help_faq'] = Timber::get_posts($args10);
 $args6 = array(
     'post_type' => 'supporters',
     'orderby'     => 'rand'
 );
-$context['supporters'] = Timber::get_posts( $args6 );
+$context['supporters'] = Timber::get_posts($args6);
 $args5 = array(
     'post_type' => 'testimonials',
     'orderby'   => 'rand',
 );
 //var_dump(Timber::get_posts( $args9 ));die();
-$context['testimonials'] = Timber::get_posts( $args5 );
+$context['testimonials'] = Timber::get_posts($args5);
 $context['page_right'] = Timber::get_widgets('page_right');
 $context['page_right_small'] = Timber::get_widgets('page_right_small');
 $context['home_page_sponsors'] = Timber::get_widgets('home_page_sponsors');
@@ -82,4 +89,4 @@ $context['footer_widget_2'] = Timber::get_widgets('footer_widget_2');
 $context['footer_widget_3'] = Timber::get_widgets('footer_widget_3');
 $timber_post = new Timber\Post();
 $context['post'] = $timber_post;
-Timber::render( array( 'page-' . $timber_post->post_name . '.twig', 'page.twig' ), $context );
+Timber::render(array('page-' . $timber_post->post_name . '.twig', 'page.twig'), $context);
