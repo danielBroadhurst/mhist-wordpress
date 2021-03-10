@@ -1,0 +1,44 @@
+[05-Oct-2020 04:46:18 UTC] PHP Fatal error:  Uncaught Error: Class 'Timber' not found in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php:16
+Stack trace:
+#0 {main}
+  thrown in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php on line 16
+[02-Nov-2020 21:33:32 UTC] PHP Fatal error:  Uncaught Error: Class 'Timber' not found in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php:16
+Stack trace:
+#0 {main}
+  thrown in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php on line 16
+[08-Nov-2020 00:45:28 UTC] PHP Fatal error:  Uncaught Error: Class 'Timber' not found in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php:16
+Stack trace:
+#0 {main}
+  thrown in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php on line 16
+[11-Nov-2020 22:37:43 UTC] PHP Fatal error:  Uncaught Error: Class 'Timber' not found in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php:16
+Stack trace:
+#0 {main}
+  thrown in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php on line 16
+[13-Nov-2020 21:55:54 UTC] PHP Fatal error:  Uncaught Error: Class 'Timber' not found in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php:16
+Stack trace:
+#0 {main}
+  thrown in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php on line 16
+[16-Nov-2020 20:01:16 UTC] PHP Fatal error:  Uncaught Error: Class 'Timber' not found in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php:16
+Stack trace:
+#0 {main}
+  thrown in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php on line 16
+[20-Nov-2020 22:01:02 UTC] PHP Fatal error:  Uncaught Error: Class 'Timber' not found in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php:16
+Stack trace:
+#0 {main}
+  thrown in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php on line 16
+[24-Nov-2020 20:55:27 UTC] PHP Fatal error:  Uncaught Error: Class 'Timber' not found in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php:16
+Stack trace:
+#0 {main}
+  thrown in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php on line 16
+[17-Jan-2021 22:08:13 UTC] PHP Fatal error:  Uncaught Error: Class 'Timber' not found in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php:16
+Stack trace:
+#0 {main}
+  thrown in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php on line 16
+[18-Jan-2021 19:47:43 UTC] PHP Fatal error:  Uncaught Error: Class 'Timber' not found in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php:16
+Stack trace:
+#0 {main}
+  thrown in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php on line 16
+[23-Jan-2021 19:48:33 UTC] PHP Fatal error:  Uncaught Error: Class 'Timber' not found in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php:16
+Stack trace:
+#0 {main}
+  thrown in /data02/c8877126/public_html/wp-content/themes/mhist-timber/index.php on line 16

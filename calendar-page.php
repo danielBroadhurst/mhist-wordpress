@@ -50,6 +50,13 @@ $friday = array(
     'order' => 'ASC'
 );
 $context['friday'] = Timber::get_posts( $friday );
+$saturday = array(
+    'post_type' => 'support-group',
+    'tag' => 'saturday',
+    'orderby'   => 'title',
+    'order' => 'ASC'
+);
+$context['saturday'] = Timber::get_posts( $saturday );
 $templates = array( 'calendar-page.twig' );
 if ( is_home() ) {
 	array_unshift( $templates, 'front-page.twig', 'home.twig' );

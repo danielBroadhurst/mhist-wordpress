@@ -23,6 +23,7 @@
                     <li data-value="wednesday" class="button hollow" onclick="daySelect(this)"><a href="Javascript:void(0)">Wednesday</a></li>
                     <li data-value="thursday" class="button hollow" onclick="daySelect(this)"><a href="Javascript:void(0)">Thursday</a></li>
                     <li data-value="friday" class="button hollow" onclick="daySelect(this)"><a href="Javascript:void(0)"></a>Friday</a></li>
+                    <li data-value="saturday" class="button hollow" onclick="daySelect(this)"><a href="Javascript:void(0)"></a>Saturday</a></li>
                 </ul>
             </div>
 
@@ -130,6 +131,30 @@
                             <h2>Friday</h2>
                             <div class="grid-x grid-margin-x">
                                 {% for post in friday %}
+                                <div class="cell large-3">
+                                    <div class="card {{ cycle(['even', 'odd'], loop.index0) }}">
+                                        <div class="card-divider">
+                                            <a href="{{ post.link }}">
+                                                <h3>{{post.title}}</h3>
+                                            </a>
+                                        </div>
+                                        <div class="card-section">
+                                            <img src="{{ post.thumbnail.src|resize(1200, 800) }}" alt="Image">
+                                            <p>{{post.preview.read_more(FALSE)}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div id="saturday" class="day">
+                    <div class="grid-container">
+                        <section class="article-body">
+                            <h2>Saturday</h2>
+                            <div class="grid-x grid-margin-x">
+                                {% for post in saturday %}
                                 <div class="cell large-3">
                                     <div class="card {{ cycle(['even', 'odd'], loop.index0) }}">
                                         <div class="card-divider">

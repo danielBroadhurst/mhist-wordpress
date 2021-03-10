@@ -7,23 +7,29 @@
 			{% if item.children %}
 			<div class="dropdown-row">
 				<div class="dropdown-content">
-					{% if item.title == 'Information' %}
-					<h3>Check out the latest {{item.title}} from MhIST</h3>
+					{% if item.title == 'MhIST' %}
+					<h3>Latest News and Information about MhIST.</h3>
 					{% endif %}
-					{% if item.title == 'Projects' %}
-					<h3>Our new Projects</h3>
+					{% if item.title == 'What is Mental Health?' %}
+					<h3>Find lots of useful information about Mental Health.</h3>
 					{% endif %}
-					{% if item.title == 'Support Groups' %}
-					<h3>Find out about our Self Help {{item.title}} we run at MhIST</h3>
+					{% if item.title == 'Projects and Services' %}
+					<h3>Our latest {{item.title}}</h3>
 					{% endif %}
-					{% if item.title == 'Advocacy' %}
-					<h3>Find out about how our Advocacy service can help you.</h3>
+					{% if item.title == 'Group Activities' %}
+					<h3>Find out about our {{item.title}} we run at MhIST</h3>
 					{% endif %}
-					{% if item.title == 'Talk Therapy Service' %}
-					<h3>Find out about what Talk Therapy is all about and how it helps.</h3>
+					{% if item.title == 'One to One Support' %}
+					<h3>Find out about how our {{item.title}} services can help you.</h3>
 					{% endif %}
-					{% if item.title == 'Get Involved' %}
-					<h3>{{item.title}} with MhIST by donating, volunteering or fundraising.</h3>
+					{% if item.title == 'Useful Information and Resources' %}
+					<h3>Useful links and information we think you'll appreciate.</h3>
+					{% endif %}
+					{% if item.title == 'Support Us' %}
+					<h3>{{item.title}} at MhIST by donating, volunteering or fundraising.</h3>
+					{% endif %}
+					{% if item.title == 'Contact Us' %}
+					<h3>Get in touch with us or find us on Social Media.</h3>
 					{% endif %}
 					<ul>
 						{% for child in item.children %}

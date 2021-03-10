@@ -12,28 +12,34 @@
 		{% block header %}
 		<div class="grid-container">
 			<div class="grid-x grid-margin-x flex-center-vertical">
-				<div class="cell small-4 header-logo">
+				<div class="cell small-3 header-logo">
 					<a href="{{site.url}}" rel="home" title="MhIST Home Page"><img
-							src="{{site.url}}/wp-content/uploads/2019/07/mhist-logo-new.png"
+							src="{{site.url}}/wp-content/uploads/2021/03/logo.png"
 							alt="MhIST Bolton Logo"></a>
+					<div class="social-icons">
+						<a href="https://www.facebook.com/mhist.bolton/" target="_blank"><img
+								src="{{site.url}}/wp-content/uploads/2019/06/iconfinder_Facebook_4550856.png"
+								alt="MhIST Facebook" title="MhIST Facebook"></a>
+						<a href="https://donate.giveasyoulive.com/donate?cid=118485&utm_campaign=Donatebutton&utm_content=118485&wl=1&br=22&bc=e61f68" target="_blank"><img 
+							src="https://resources.giveasyoulive.com/images/donations/button-square-donate-navy.png?cid=118485" 
+							alt="Donate through Give as you Live Donate" title="Give as you Live" width="auto" /></a>
+						<a href="https://www.justgiving.com/mhist" target="_blank"><img
+								src="{{site.url}}/wp-content/uploads/2019/07/JustGiving-Logo.png"
+								alt="MhIST Just Giving" title="MhIST Just Giving"></a>
+						<a href="tel:01204527200"><img
+								src="{{site.url}}/wp-content/uploads/2019/06/iconfinder_Viber_4550868.png"
+								alt="Call MhIST" title="Call MhIST"></a>
+						<a href="mailto:help@mhist.co.uk"><img
+								src="{{site.url}}/wp-content/uploads/2019/06/iconfinder_Email_4550857.png"
+								alt="Email MhIST" title="Email MhIST"></a>
+					</div>
 				</div>
-				<div class="cell small-8 social-icons">
-					<a href="https://www.facebook.com/mhist.bolton/" target="_blank"><img
-							src="{{site.url}}/wp-content/uploads/2019/06/iconfinder_Facebook_4550856.png"
-							alt="MhIST Facebook" title="MhIST Facebook"></a>
-					<a href="https://donate.giveasyoulive.com/donate?cid=118485&utm_campaign=Donatebutton&utm_content=118485&wl=1&br=22&bc=e61f68" target="_blank"><img 
-						src="https://resources.giveasyoulive.com/images/donations/button-square-donate-navy.png?cid=118485" 
-						alt="Donate through Give as you Live Donate" title="Give as you Live" width="auto" /></a>
-					<a href="https://www.justgiving.com/mhist" target="_blank"><img
-							src="{{site.url}}/wp-content/uploads/2019/07/JustGiving-Logo.png"
-							alt="MhIST Just Giving" title="MhIST Just Giving"></a>
-					<a href="tel:01204527200"><img
-							src="{{site.url}}/wp-content/uploads/2019/06/iconfinder_Viber_4550868.png"
-							alt="Call MhIST" title="Call MhIST"></a>
-					<a href="mailto:help@mhist.co.uk"><img
-							src="{{site.url}}/wp-content/uploads/2019/06/iconfinder_Email_4550857.png"
-							alt="Email MhIST" title="Email MhIST"></a>
+				<div class="cell small-9 header-text">
+					<p><strong>MhIST – Mental Health Independent Support Team working with our communities to give the best mental health support we can since 1992.</strong></p>
+					<p>We provide a safe and friendly place where you can work at your own pace to start your journey towards positive mental wellbeing.</p>
+					<p>Why not explore our services below!</p>
 				</div>
+				
 			</div>
 		</div>
 		{% include "menu.twig" with {'menu': menu.get_items} %}

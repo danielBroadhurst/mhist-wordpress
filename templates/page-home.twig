@@ -1,241 +1,382 @@
-{% extends "base.twig" %}
-
-{% block content %}
+{% extends "base.twig" %} {% block content %}
 <div class="content-wrapper" id="main-content">
-	<article class="post-type-{{post.post_type}} article-content" id="post-{{post.ID}}">
+  <article
+    class="post-type-{{ post.post_type }} article-content"
+    id="post-{{ post.ID }}"
+  >
+    <div class="grid-container-full main-section">
+      <div class="main-link">
+        <a href="{{ post.meta('mainlinkurl') }}">
+          <img
+            src="{{ Image(post.meta('mainlinkimage')).src }}"
+            alt="{{ post.meta('mainlinktext') }}"
+          />
+          <div class="top-left dark-blue">{{ post.meta("mainlinktext") }}</div>
+        </a>
+      </div>
+      <div class="secondary-links">
+        <div class="link">
+          <a href="{{ post.meta('linkurl_top_left') }}">
+            <img
+              src="{{ Image(post.meta('linkimage_top_left')).src }}"
+              alt="{{ post.meta('linktext_top_left') }}"
+            />
+            <div class="bottom-left yellow">
+              {{ post.meta("linktext_top_left") }}
+            </div>
+          </a>
+        </div>
+        <div class="link">
+          <a href="{{ post.meta('linkurl_top_right') }}">
+            <img
+              src="{{ Image(post.meta('linkimage_top_right')).src }}"
+              alt="{{ post.meta('linktext_top_right') }}"
+            />
+            <div class="bottom-left dark-blue">
+              {{ post.meta("linktext_top_right") }}
+            </div>
+          </a>
+        </div>
+        <div class="link">
+          <a href="{{ post.meta('linkurl_bottom_left') }}">
+            <img
+              src="{{ Image(post.meta('linkimage_bottom_left')).src }}"
+              alt="{{ post.meta('linktext_bottom_left') }}"
+            />
+            <div class="bottom-left dark-blue">
+              {{ post.meta("linktext_bottom_left") }}
+            </div>
+          </a>
+        </div>
+        <div class="link">
+          <a href="{{ post.meta('linkurl_bottom_right') }}">
+            <img
+              src="{{ Image(post.meta('linkimage_bottom_right')).src }}"
+              alt="{{ post.meta('linktext_bottom_right') }}"
+            />
+            <div class="bottom-left yellow">
+              {{ post.meta("linktext_bottom_right") }}
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
 
-		{% if post.meta('emergencymessage') is not empty %}
-		<div class="grid-container-full">
-			<div class="cell cta yellow emergency">
-				<div class="grid-x grid-margin-x align-center">
-					<div class="cell medium-8">						
-						{{ post.meta('emergencymessage') }}
-					</div>
-				</div>
-			</div>
-		</div>
-		{% endif %}
+    {% if post.meta('emergencymessage') is not empty %}
+    <div class="grid-container-full">
+      <div class="cell cta yellow emergency">
+        <div class="cell small-12 flex-container">
+          {{ post.meta("emergencymessage") }}
+        </div>
+      </div>
+    </div>
+    {% endif %}
 
-		<div class="grid-container-full header-section">
-			<div class="header-image">
-				<img src="{{ post.thumbnail.src|resize(1400, 600) }}" alt="{{ post.title }}">
-			</div>
-			<div class="grid-container header-vertical">
-				<div class="grid-x grid-margin-x">
-					<div class="cell large-7 header-text dark-blue">
-						<h1>{{post.title}} | Mental Health Independent Support Team</h1>
-						{{post.content}}
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="grid-container">
+      <h2>Self Help Support Groups</h2>
+      <p>
+        Our support groups can provide you with all the tools you need to get
+        the help you need, find out more about our groups below. Each group has
+        it's own information page which is ran by the group to give you a great
+        insight into what they offer.
+      </p>
+      <h3>Featured Groups</h3>
+      <div class="grid-x grid-margin-x">
+        {% for post in support_groups|slice(3,3) %}
+        <div class="cell large-4">
+          <div
+            class="support-group card {{ cycle(['even', 'odd'], loop.index0) }}"
+            id="{{ post.slug }}"
+          >
+            <div class="card-divider">
+              <a href="{{ post.link }}">
+                <h3>{{ post.title }}</h3>
+              </a>
+            </div>
+            <div class="card-section">
+              <a href="{{ post.link }}"
+                ><img src="{{ post.thumbnail.src }}" alt="{{ post.title }}"
+              /></a>
+              <p>{{ post.preview.read_more(FALSE) }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="cell flex-center support-group-list">
+          <p class="other-groups-title"><strong>Our Other Groups</strong></p>
+          <ul class="other-groups">
+            {% for post in support_groups_all %}
+            <li>
+              <a href="{{ post.link }}">
+                {{ post.title }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
 
-		<div class="grid-container-full">
-			<div class="cell cta yellow">
-				<div class="grid-container">
-					<div class="grid-x grid-margin-x">
-						<div class="cell medium-5 left">
-							<h3>Support from people who have similar experiences.</h3>
-							<p>Our self-help groups are very active and they provide for the needs of different groups of people such as depression, anxiety, self-esteem, and mindfulness.</p>
-						</div>
-						<div class="cell medium-5 medium-offset-2 flex-right-space">
-							<h3>Donations &amp; Fundraising</h3>
-							<p>Can you help us raise funds to help people.</p>
-							<a href="/get-involved/donate-or-fundraising/"
-								class="button hollow slide-right">Donations</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="grid-container-full">
+      <div class="cell cta yellow">
+        <div class="grid-container">
+          <div class="grid-x grid-margin-x">
+            <div class="cell medium-5 left">
+              <h3>Support from people who have similar experiences.</h3>
+              <p>
+                Our self-help groups are very active and they provide for the
+                needs of different groups of people such as depression, anxiety,
+                self-esteem, and mindfulness.
+              </p>
+            </div>
+            <div class="cell medium-5 medium-offset-2 flex-right-space">
+              <h3>Donations &amp; Fundraising</h3>
+              <p>Can you help us raise funds to help people.</p>
+              <a
+                href="/get-involved/donate-or-fundraising/"
+                class="button hollow slide-right"
+                >Donations</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<div class="grid-container">
-			<h2>Self Help Support Groups</h2>
-			<p>Our support groups can provide you with all the tools you need to get the help you need, find out more
-				about our groups below. Each group has it's own information page which is ran by the group to give you a
-				great insight into what they offer.</p>
-			<h3>Featured Groups</h3>
-			<div class="grid-x grid-margin-x">
+    <div class="grid-container">
+      <h2>Self Help Support Groups</h2>
+      <p>
+        Our support groups can provide you with all the tools you need to get
+        the help you need, find out more about our groups below. Each group has
+        it's own information page which is ran by the group to give you a great
+        insight into what they offer.
+      </p>
+      <h3>Featured Groups</h3>
+      <div class="grid-x grid-margin-x">
+        {% for post in support_groups|slice(0,3) %}
+        <div class="cell large-4">
+          <div
+            class="support-group card {{ cycle(['even', 'odd'], loop.index0) }}"
+            id="{{ post.slug }}"
+          >
+            <div class="card-divider">
+              <a href="{{ post.link }}">
+                <h3>{{ post.title }}</h3>
+              </a>
+            </div>
+            <div class="card-section">
+              <a href="{{ post.link }}"
+                ><img src="{{ post.thumbnail.src }}" alt="{{ post.title }}"
+              /></a>
+              <p>{{ post.preview.read_more(FALSE) }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="cell flex-center support-group-list">
+          <p class="other-groups-title"><strong>Our Other Groups</strong></p>
+          <ul class="other-groups">
+            {% for post in support_groups_all %}
+            <li>
+              <a href="{{ post.link }}">
+                {{ post.title }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
 
-				{% for post in support_groups|slice(0,3) %}
-				<div class="cell large-4">
-					<div class="support-group card {{ cycle(['even', 'odd'], loop.index0) }}" id="{{post.slug}}">
-						<div class="card-divider">
-							<a href="{{ post.link }}">
-								<h3>{{post.title}}</h3>
-							</a>
-						</div>
-						<div class="card-section">
-							<a href="{{ post.link }}"><img src="{{ post.thumbnail.src }}"
-									alt="{{ post.title }}"></a>
-							<p>{{ post.preview.read_more(FALSE) }}</p>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-				<div class="cell flex-center support-group-list">
-					<p class="other-groups-title"><strong>Our Other Groups</strong></p>
-					<ul class="other-groups">
-						{% for post in support_groups_all %}
-						<li><a href="{{ post.link }}">
-								{{post.title}}
-							</a>
-						</li>
-						{% endfor %}
-					</ul>
-				</div>
-			</div>
-		</div>
+    <div class="grid-container-full">
+      <div class="cell cta dark-blue">
+        <div class="grid-container">
+          <div class="grid-x grid-margin-x" id="justgiving">
+            <div class="cell large-4">
+              <h3>Help Us Today</h3>
+              <p>
+                Donations can help us provide our services to people who need
+                them the most. If you can Donate then please follow the link to
+                our JustGiving page.
+              </p>
+              <a
+                href="//widgets.justgiving.com/Button/Redirect?p=eyJJZCI6Ijc3ZGNkNDI3LTc0N2QtNGU4ZS05M2YzLTJiNTgzZjVjYjdmNCIsIkNoYXJpdHlJZCI6ODA5NzQ2LCJTaXplIjoicyIsIlJlZmVyZW5jZSI6IiIsIlR5cGUiOiJGdW5kcmFpc2luZyJ9"
+                ><img
+                  src="//widgets.justgiving.com/Button?p=eyJJZCI6Ijc3ZGNkNDI3LTc0N2QtNGU4ZS05M2YzLTJiNTgzZjVjYjdmNCIsIkNoYXJpdHlJZCI6ODA5NzQ2LCJTaXplIjoicyIsIlJlZmVyZW5jZSI6IiIsIlR5cGUiOiJGdW5kcmFpc2luZyJ9"
+              /></a>
+            </div>
+            <div class="cell large-8">
+              <div class="cell">
+                <img
+                  src="wp-content/uploads/2019/10/justgiving.svg"
+                  alt="Just Giving Logo"
+                />
+              </div>
+              <div class="cell flex-center-row-even mt-1">
+                <a
+                  href="https://link.justgiving.com/v1/charity/donate/charityId/809746?amount=3.00&currency=GBP&reference=homepage&exitUrl=https%3A%2F%2Fbeedesignstudio.co.uk%2Fmhist%2F%3FjgDonationId%3DJUSTGIVING-DONATION-ID&message=Support%20MhIST%20by%20donating%20now."
+                  class="button hollow justgivingpurple"
+                  >Donate £3</a
+                >
+                <a
+                  href="https://link.justgiving.com/v1/charity/donate/charityId/809746?amount=5.00&currency=GBP&reference=homepage&exitUrl=https%3A%2F%2Fbeedesignstudio.co.uk%2Fmhist%2F%3FjgDonationId%3DJUSTGIVING-DONATION-ID&message=Support%20MhIST%20by%20donating%20now."
+                  class="button hollow justgivingpurple"
+                  >Donate £5</a
+                >
+                <a
+                  href="https://link.justgiving.com/v1/charity/donate/charityId/809746?amount=10.00&currency=GBP&reference=homepage&exitUrl=https%3A%2F%2Fbeedesignstudio.co.uk%2Fmhist%2F%3FjgDonationId%3DJUSTGIVING-DONATION-ID&message=Support%20MhIST%20by%20donating%20now."
+                  class="button hollow justgivingpurple"
+                  >Donate £10 or More</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<div class="grid-container-full">
-			<div class="cell cta dark-blue">
-				<div class="grid-container">
-					<div class="grid-x grid-margin-x" id="justgiving">
-						<div class="cell large-4">
-							<h3>Help Us Today</h3>
-							<p>Donations can help us provide our services to people who need them the most. If you can
-								Donate then please follow the link to our JustGiving page.</p>
-								<a href="//widgets.justgiving.com/Button/Redirect?p=eyJJZCI6Ijc3ZGNkNDI3LTc0N2QtNGU4ZS05M2YzLTJiNTgzZjVjYjdmNCIsIkNoYXJpdHlJZCI6ODA5NzQ2LCJTaXplIjoicyIsIlJlZmVyZW5jZSI6IiIsIlR5cGUiOiJGdW5kcmFpc2luZyJ9"><img
-									src="//widgets.justgiving.com/Button?p=eyJJZCI6Ijc3ZGNkNDI3LTc0N2QtNGU4ZS05M2YzLTJiNTgzZjVjYjdmNCIsIkNoYXJpdHlJZCI6ODA5NzQ2LCJTaXplIjoicyIsIlJlZmVyZW5jZSI6IiIsIlR5cGUiOiJGdW5kcmFpc2luZyJ9" /></a>
-						</div>
-						<div class="cell large-8">
-							<div class="cell">
-								<img src="wp-content/uploads/2019/10/justgiving.svg" alt="Just Giving Logo">
-							</div>
-							<div class="cell flex-center-row-even mt-1">
-								<a href="https://link.justgiving.com/v1/charity/donate/charityId/809746?amount=3.00&currency=GBP&reference=homepage&exitUrl=https%3A%2F%2Fbeedesignstudio.co.uk%2Fmhist%2F%3FjgDonationId%3DJUSTGIVING-DONATION-ID&message=Support%20MhIST%20by%20donating%20now."
-									class="button hollow justgivingpurple">Donate £3</a>
-								<a href="https://link.justgiving.com/v1/charity/donate/charityId/809746?amount=5.00&currency=GBP&reference=homepage&exitUrl=https%3A%2F%2Fbeedesignstudio.co.uk%2Fmhist%2F%3FjgDonationId%3DJUSTGIVING-DONATION-ID&message=Support%20MhIST%20by%20donating%20now."
-									class="button hollow justgivingpurple">Donate £5</a>
-								<a href="https://link.justgiving.com/v1/charity/donate/charityId/809746?amount=10.00&currency=GBP&reference=homepage&exitUrl=https%3A%2F%2Fbeedesignstudio.co.uk%2Fmhist%2F%3FjgDonationId%3DJUSTGIVING-DONATION-ID&message=Support%20MhIST%20by%20donating%20now."
-									class="button hollow justgivingpurple">Donate £10 or More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    <section class="grid-container">
+      <div class="grid-x grid-margin-x">
+        <div class="cell large-3">
+          <h2>Your Letters</h2>
+          {% for post in your_stories|slice(0,1) %}
+          <div class="your-stories" id="{{ post.slug }}">
+            <a href="{{ post.link }}">
+              <h3>{{ post.title }}</h3>
+            </a>
+            <img
+              src="{{ post.thumbnail.src|resize(1200, 800) }}"
+              alt="{{ post.title }}"
+            />
+            <p>
+              {{ post.preview.read_more("Continue reading this letter...") }}
+            </p>
+          </div>
+          {% endfor %}
+          <a href="/information-and-support/your-stories/">
+            <p>Read more letters from MhIST's visitors.</p>
+          </a>
+        </div>
+        <div class="cell large-8 large-offset-1">
+          <h2>Latest News</h2>
+          {% for post in news_stories|slice(0,3) %}
+          <div class="cell large-8 news-stories blog-roll" id="{{ post.slug }}">
+            <a href="{{ post.link }}">
+              <h3>{{ post.title }}</h3>
+            </a>
+            <p>
+              {{ post.preview.read_more("Continue reading this blog post...") }}
+            </p>
+          </div>
+          {% endfor %}
+          <a href="/information-and-support/latest-news/">
+            <p>More from the MhIST Blog.</p>
+          </a>
+        </div>
+      </div>
+    </section>
 
-		<section class="grid-container">
-			<div class="grid-x grid-margin-x">
-				<div class="cell large-3">
-					<h2>Your Letters</h2>
-					{% for post in your_stories|slice(0,1) %}
-					<div class="your-stories" id="{{post.slug}}">
-						<a href="{{ post.link }}">
-							<h3>{{post.title}}</h3>
-						</a>
-						<img src="{{ post.thumbnail.src|resize(1200, 800) }}" alt="{{ post.title }}">
-						<p>{{ post.preview.read_more('Continue reading this letter...') }}</p>
-					</div>
-					{% endfor %}
-					<a href="/information-and-support/your-stories/">
-						<p>Read more letters from MhIST's visitors.</p>
-					</a>
-				</div>
-				<div class="cell large-8 large-offset-1">
-					<h2>Latest News</h2>
-					{% for post in news_stories|slice(0,3) %}
-					<div class="cell large-8 news-stories blog-roll" id="{{post.slug}}">
-						<a href="{{ post.link }}">
-							<h3>{{post.title}}</h3>
-						</a>
-						<p>{{ post.preview.read_more('Continue reading this blog post...') }}</p>
-					</div>
-					{% endfor %}
-					<a href="/information-and-support/latest-news/">
-						<p>More from the MhIST Blog.</p>
-					</a>
-				</div>
-			</div>
-		</section>
+    <div class="grid-container-full">
+      <div class="cell cta yellow">
+        <div class="grid-container">
+          <div class="grid-x grid-margin-x flex-center-vertical spaced">
+            <div class="cell">
+              <h3>Our Sponsors</h3>
+            </div>
+            {% for post in supporters|slice(0,4) %}
+            <div class="cell large-2">
+              <a href="{{ post.external_link }}" target="_blank"
+                ><img src="{{ post.thumbnail.src }}" alt="{{ post.title }}"
+              /></a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<div class="grid-container-full">
-			<div class="cell cta yellow">
-				<div class="grid-container">
-					<div class="grid-x grid-margin-x flex-center-vertical spaced">
-						<div class="cell">
-							<h3>Our Sponsors</h3>
-						</div>
-						{% for post in supporters|slice(0,4) %}
-						<div class="cell large-2">
-							<a href="{{ post.external_link }}" target="_blank"><img src="{{ post.thumbnail.src }}" alt="{{ post.title }}"></a>
-						</div>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="grid-container">
+      <h2>What people are saying about MhIST</h2>
+      <div class="grid-x grid-margin-x">
+        {% for post in testimonials|slice(0,3) %}
 
-		<div class="grid-container">
-			<h2>What people are saying about MhIST</h2>
-			<div class="grid-x grid-margin-x">
-				{% for post in testimonials|slice(0,3) %}
+        <div class="cell large-4">
+          <div class="testimonials card" id="{{ post.slug }}">
+            <div class="card-divider">
+              <h3>{{ post.title }}</h3>
+            </div>
+            <div class="card-section">
+              {% if post.thumbnail.src %}
+              <img
+                src="{{ post.thumbnail.src|resize(600, 400) }}"
+                alt="{{ post.title }}"
+              />
+              {% endif %}
+              <p>{{ post.preview.read_more(FALSE) }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
 
-				<div class="cell large-4">
-					<div class="testimonials card" id="{{post.slug}}">
-						<div class="card-divider">
-							<h3>{{post.title}}</h3>
-						</div>
-						<div class="card-section">
-							{% if post.thumbnail.src %}
-							<img src="{{ post.thumbnail.src|resize(600, 400) }}" alt="{{ post.title }}">
-							{% endif %}
-							<p>{{ post.preview.read_more(FALSE) }}</p>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-		</div>
+    <div class="grid-container-full">
+      <div class="cell cta dark-blue">
+        <div class="grid-container">
+          <div class="grid-x grid-margin-x">
+            <div class="cell medium-5 left">
+              <h3>Survey Monkey</h3>
+              <p>Can you spare a moment to do our latest survey.</p>
+              <a
+                href="https://www.surveymonkey.co.uk/r/RCLXC2V"
+                class="button hollow"
+                >Survey Monkey</a
+              >
+            </div>
+            <div class="cell medium-5 medium-offset-2 flex-right-space">
+              <h3>Get involved with MhIST</h3>
+              <p>Volunteer with MhIST and help others.</p>
+              <a href="/get-involved/volunteer-with-us/" class="button hollow"
+                >Volunteer</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<div class="grid-container-full">
-			<div class="cell cta dark-blue">
-				<div class="grid-container">
-					<div class="grid-x grid-margin-x">
-						<div class="cell medium-5 left">
-							<h3>Survey Monkey</h3>
-							<p>Can you spare a moment to do our latest survey.</p>
-							<a href="https://www.surveymonkey.co.uk/r/RCLXC2V"
-								class="button hollow">Survey Monkey</a>
-						</div>
-						<div class="cell medium-5 medium-offset-2 flex-right-space">
-							<h3>Get involved with MhIST</h3>
-							<p>Volunteer with MhIST and help others.</p>
-							<a href="/get-involved/volunteer-with-us/"
-								class="button hollow">Volunteer</a>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-
-		<div class="grid-container">
-			<div class="grid-x grid-margin-x">
-				<div class="cell large-8">
-					<h2>Frequenty Asked Questions</h2>
-					<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
-						{% for post in faq|slice(0,3) %}
-						<li class="accordion-item" data-accordion-item>
-							<a href="#" class="accordion-title">{{post.title}}</a>
-							<div class="accordion-content" data-tab-content>
-								{{ post.content }}
-							</div>
-						</li>
-						{% endfor %}
-					</ul>
-				</div>
-				<div class="cell large-4">
-					<h2>Looking for help?</h2>
-					<a href="/contact-us/">
-						<img src="/wp-content/uploads/2020/01/small-dog-scaled.jpg"
-						alt="Image">
-					</a>
-				</div>
-			</div>
-		</div>
-
-	</article>
-</div><!-- /content-wrapper -->
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x">
+        <div class="cell large-8">
+          <h2>Frequenty Asked Questions</h2>
+          <ul
+            class="accordion"
+            data-accordion
+            data-multi-expand="true"
+            data-allow-all-closed="true"
+          >
+            {% for post in faq|slice(0,3) %}
+            <li class="accordion-item" data-accordion-item>
+              <a href="#" class="accordion-title">{{ post.title }}</a>
+              <div class="accordion-content" data-tab-content>
+                {{ post.content }}
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="cell large-4">
+          <h2>Looking for help?</h2>
+          <a href="/contact-us/">
+            <img
+              src="{{ site.url }}/wp-content/uploads/2020/01/small-dog-scaled.jpg"
+              alt="Image"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+<!-- /content-wrapper -->
 {% endblock %}
